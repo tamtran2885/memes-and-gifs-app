@@ -29,3 +29,21 @@ The **main functionalities** are detailed below:
 - **Anyone can access the website** and **view** the **content** of other **users**, but only **previously registered** users **can upload multimedia content**
 
 https://github.com/assembler-institute/assembler-tech-challenge-v2/blob/main/README.md
+
+https://styled-components.com/docs/basics
+
+(Laravel server)
+http://localhost:8000/
+
+(XAMPP- Apache, MySQL)
+http://localhost/phpmyadmin/index.php
+
+
+http://localhost/phpmyadmin/
+
+php artisan make:controller UserController
+php artisan make:model User
+
+
+
+
