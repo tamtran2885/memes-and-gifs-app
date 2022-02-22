@@ -6,7 +6,11 @@ export const FormContainer = styled.form`
 `;
 
 export const FormInput = styled.input`
-    border-radius: 3px solid pink;
+  border-radius: 3px solid pink;
+`;
+
+export const FormSelect = styled.select`
+  border-radius: 3px solid pink;
 `;
 
 export const FormBtn = styled.button`

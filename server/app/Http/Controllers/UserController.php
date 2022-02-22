@@ -29,4 +29,9 @@ class UserController extends Controller
         return $user;
         // return "log in";
     }
+
+    function getUser($userId)
+    {
+        return User::find($userId);
+    }
 }

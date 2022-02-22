@@ -38,12 +38,34 @@ http://localhost:8000/
 (XAMPP- Apache, MySQL)
 http://localhost/phpmyadmin/index.php
 
-
 http://localhost/phpmyadmin/
 
 php artisan make:controller UserController
 php artisan make:model User
 
+## Make public the image folder
 
+- congif/filesystems.php
+  'links' => [
+  public_path('memes') => storage_path('app/memes'),
+  ],
 
+## Create path to get the file
 
+php artisan storage:link
+
+## Create new table
+
+php artisan make:migration create_categories_table
+
+## Migrate table to database
+
+php artisan migrate --path=/database/migrations/2022_02_22_170125_create_categories_table.php
+
+## Create Model
+
+php artisan make:model Category
+
+## Link of uploaded image
+
+http://localhost:8000/memes/FOViLJy0gKfmiqlwgMLAtILwJdIJ3fHY3B1WPEtN.gif

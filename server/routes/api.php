@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemeController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // User
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
+Route::get('user/{userId}', [UserController::class, 'getUser']);
+
+// Category
+Route::post('addCategory', [CategoryController::class, 'addCategory']);
+Route::get('getAllCategories', [CategoryController::class, 'getAllCategories']);
 
 // Meme
 Route::post('addMeme', [MemeController::class, 'addMeme']);
+Route::get('getAllMemes', [MemeController::class, 'getAllMemes']);
+Route::get('getMemesByEntertainments', [MemeController::class, 'getMemesByEntertainments']);
+Route::get('getMemesBySports', [MemeController::class, 'getMemesBySports']);
+Route::get('getMemesByReactions', [MemeController::class, 'getMemesByReactions']);
+Route::get('getMemesByUser/{userId}', [MemeController::class, 'getMemesByUser']);
+
+
+// search all types of memes
+Route::get('search/{key}', [MemeController::class, 'searchMemes']);
 
 

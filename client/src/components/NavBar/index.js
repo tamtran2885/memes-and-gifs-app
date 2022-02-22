@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Nav,
   NavLink,
@@ -11,12 +11,12 @@ import {
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const user = localStorage.getItem("user");
-  
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const logOut = () => {
     localStorage.clear();
     navigate("/");
-  }
+  };
 
   return (
     <>
@@ -38,26 +38,22 @@ const NavBar = () => {
         </NavMenu>
         <NavBtn>Upload</NavBtn>
         <NavBtn>
-          <NavBtnLink to="/user">
-            {user ? "User" : "Hi Guest!"}
-          </NavBtnLink>
+          <NavBtnLink to="/user">{user ? user.name : "Hi Guest!"}</NavBtnLink>
         </NavBtn>
-        {
-          !localStorage.getItem("user") ? (
-            <>
-              <NavBtn>
-                <NavBtnLink to="/sign-in">Sign In</NavBtnLink>
-              </NavBtn>
-              <NavBtn>
-                <NavBtnLink to="/sign-up">Sign Up</NavBtnLink>
-              </NavBtn>
-            </>
-          ) : (
-            <>
-              <NavBtn onClick={logOut}>Log Out</NavBtn>
-            </>
-          )
-        }
+        {!localStorage.getItem("user") ? (
+          <>
+            <NavBtn>
+              <NavBtnLink to="/sign-in">Sign In</NavBtnLink>
+            </NavBtn>
+            <NavBtn>
+              <NavBtnLink to="/sign-up">Sign Up</NavBtnLink>
+            </NavBtn>
+          </>
+        ) : (
+          <>
+            <NavBtn onClick={logOut}>Log Out</NavBtn>
+          </>
+        )}
       </Nav>
     </>
   );
