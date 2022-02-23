@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import {FormContainer, FormInput, FormBtn, FormSelect} from "./MemeFormElements.js";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
-const MemeForm = ({getMemes, categories}) => {
+const MemeForm = ({getMemes, categories, closeUploadModal}) => {
+    const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [file, setFile] = useState("");
     const [category, setCategory] = useState("");
@@ -19,7 +21,9 @@ const MemeForm = ({getMemes, categories}) => {
             // console.log(Object.fromEntries(formData.entries()));
 
             await axios.post("http://localhost:8000/api/addMeme", formData)
+            closeUploadModal();
             getMemes();
+            navigate("/");
         } catch (e) {
             console.log(e.message)
         }
@@ -47,6 +51,7 @@ const MemeForm = ({getMemes, categories}) => {
                     ))}
                 </FormSelect>
                 <FormBtn type="submit" onClick={addMeme}>Submit</FormBtn>
+                <button type="button" onClick={closeUploadModal}>Close</button>
             </FormContainer>
         </div>
     )

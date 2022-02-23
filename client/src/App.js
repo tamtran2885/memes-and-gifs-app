@@ -7,6 +7,7 @@ import Sports from "./pages/Sports";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import User from "./pages/User";
+import Meme from "./pages/Meme";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/user" element={<User />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/meme/:id" element={<Meme />} />
       </Routes>
     </div>
   );

@@ -2,12 +2,17 @@ import React, {useState, useEffect} from "react";
 import Header from "../../components/Header";
 import {UserContainer, UserListing, UserInfo} from "./UserElements";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const User = () => {
+  const navigate = useNavigate();
   const [memes, setMemes] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
+    if (!localStorage.getItem("user")) {
+      navigate("/sign-in");
+    }
     getMemesByUser();
   }, [])
 
@@ -26,8 +31,8 @@ const User = () => {
       <Header />
       <UserContainer >
         <UserInfo>
-          <h1>{user.name}</h1>
-          <h1>{user.email}</h1>
+          <h1>{user && user.name}</h1>
+          <h1>{user && user.email}</h1>
         </UserInfo>
         <UserListing>
           <h3>Memes here</h3>

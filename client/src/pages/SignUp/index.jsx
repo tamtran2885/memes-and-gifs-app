@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {FormContainer, FormBtn, FormInput} from "./SignUpElements";
-import {useNavigate} from "react-router-dom";
+import {FormContainer, FormBtn, FormInput, Container, ContainerTitle, FormFooter} from "./SignUpElements";
+import {useNavigate, Link} from "react-router-dom";
 
 import axios from "axios";
 
@@ -33,7 +33,8 @@ const SignUp = () => {
     
     return (
     <>
-      <h1>Sign Up form</h1>
+      <Container>
+        <ContainerTitle>Sign Up</ContainerTitle>
             <FormContainer>
                 <FormInput
                     type="text"
@@ -57,7 +58,9 @@ const SignUp = () => {
                     value={password}
                 />
                 <FormBtn onClick={signUp} type="submit">Submit</FormBtn>
+                <FormFooter>If you already have an account yet, please <Link to="/sign-in">Sign In</Link></FormFooter>
             </FormContainer>
+        </Container>
     </>
   );
 };

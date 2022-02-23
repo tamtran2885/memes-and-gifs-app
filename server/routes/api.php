@@ -41,7 +41,7 @@ Route::get('getMemesByEntertainments', [MemeController::class, 'getMemesByEntert
 Route::get('getMemesBySports', [MemeController::class, 'getMemesBySports']);
 Route::get('getMemesByReactions', [MemeController::class, 'getMemesByReactions']);
 Route::get('getMemesByUser/{userId}', [MemeController::class, 'getMemesByUser']);
-
+Route::get('getMemeById/{id}', [MemeController::class, 'getMemeById']);
 
 // search all types of memes
 Route::get('search/{key}', [MemeController::class, 'searchMemes']);

@@ -3,13 +3,17 @@ import {HomeContainer, HomeListing} from "./HomeElements";
 import MemeForm from "../../components/MemeForm";
 import Header from "../../components/Header";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import Modal from "react-modal"
 
 const Home = () => {
   const navigate = useNavigate();
   const [memes, setMemes] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchWord, setSearchWord] = useState("");
+
+   // Set state for upload modal
+   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     getMemes();
@@ -48,19 +52,31 @@ const Home = () => {
     }
   }
 
+  const openUploadModal = () => {
+    if (!localStorage.getItem("user")) {
+      navigate("/sign-in");
+    }
+    setModalIsOpen(true);
+  }
+
+  const closeUploadModal = () => {
+    setModalIsOpen(false);
+  }
+
   return (
     <>
-      <Header searchWord={searchWord} setSearchWord={setSearchWord} searchMemes={searchMemes}/>
+      <Header openUploadModal={openUploadModal} searchWord={searchWord} setSearchWord={setSearchWord} searchMemes={searchMemes}/>
       <HomeContainer >
-        <MemeForm getMemes={getMemes} categories={categories}/>
+        <Modal isOpen={modalIsOpen}>
+          <MemeForm closeUploadModal={closeUploadModal}  getMemes={getMemes} categories={categories}/>
+        </Modal>
         <HomeListing>
-          <h3>Memes here</h3>
           {memes && memes.map(meme => (
-            <div>
+            <div key={meme.id}>
               <p>{meme.title}</p>
               {/* <p>{meme.category.title}</p> */}
               {/* <p>{meme.user.email}</p> */}
-              <img src={"http://localhost:8000/"+ meme.url} alt="meme" style={{ width: "100px", heigh: "100px"}}/>
+              <Link to={`/meme/${meme.id}`}><img src={"http://localhost:8000/"+ meme.url} alt="meme" style={{ width: "100px", heigh: "100px"}}/></Link>
             </div>
           ))}
         </HomeListing>

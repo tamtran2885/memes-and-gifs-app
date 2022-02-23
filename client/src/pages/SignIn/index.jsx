@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
-import {FormContainer, FormInput, FormBtn} from "./SignInElements.js"
+import {FormContainer, FormInput, FormBtn, Container, ContainerTitle, FormFooter} from "./SignInElements.js"
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -33,24 +34,27 @@ const SignIn = () => {
 
   return (
     <>
-      <h1>Sign In form</h1>
-            <FormContainer>
-                <FormInput
-                    type="text"
-                    placeholder="email"
-                    required
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                />
-                <FormInput
-                    type="password"
-                    placeholder="password"
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                />
-                <FormBtn type="submit" onClick={login}>Submit</FormBtn>
-            </FormContainer>
+      <Container>
+        <ContainerTitle>Sign In</ContainerTitle>
+        <FormContainer>
+          <FormInput
+            type="text"
+            placeholder="Email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+        />
+        <FormInput
+            type="password"
+            placeholder="Password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+        />
+          <FormBtn type="submit" onClick={login}>SIGN IN</FormBtn>
+          <FormFooter>If you don't have an account yet, please <Link to="/sign-up">Sign Up</Link></FormFooter>
+        </FormContainer>
+      </Container>
     </>
   );
 };

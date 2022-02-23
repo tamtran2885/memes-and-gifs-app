@@ -25,6 +25,16 @@ class MemeController extends Controller
         return Meme::all();
     }
 
+    function getMemeById($id)
+    {
+        return Meme::find($id);
+        return DB::table('memes')
+        ->join('categories', 'memes.category_id', "=" ,'categories.id')
+        ->where('categories.id', $id)
+        ->select('memes.*')
+        ->get();
+    }
+
     function searchMemes($key)
     {
         // return $key;

@@ -27,7 +27,6 @@ class UserController extends Controller
             return ["error" => "Email or password is not correct"];
         }
         return $user;
-        // return "log in";
     }
 
     function getUser($userId)

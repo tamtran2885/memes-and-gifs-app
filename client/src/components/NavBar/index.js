@@ -9,7 +9,7 @@ import {
   NavBtnLink,
 } from "./NavBarElements";
 
-const NavBar = () => {
+const NavBar = ({ openUploadModal }) => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -26,17 +26,17 @@ const NavBar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/reactions" activeStyle>
+          {/* <NavLink to="/reactions" activeStyle>
             Reactions
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/entertainments" activeStyle>
             Entertainments
           </NavLink>
-          <NavLink to="/sports" activeStyle>
+          {/* <NavLink to="/sports" activeStyle>
             Sports
-          </NavLink>
+          </NavLink> */}
         </NavMenu>
-        <NavBtn>Upload</NavBtn>
+        <NavBtn onClick={openUploadModal}>Upload</NavBtn>
         <NavBtn>
           <NavBtnLink to="/user">{user ? user.name : "Hi Guest!"}</NavBtnLink>
         </NavBtn>
@@ -44,9 +44,6 @@ const NavBar = () => {
           <>
             <NavBtn>
               <NavBtnLink to="/sign-in">Sign In</NavBtnLink>
-            </NavBtn>
-            <NavBtn>
-              <NavBtnLink to="/sign-up">Sign Up</NavBtnLink>
             </NavBtn>
           </>
         ) : (
