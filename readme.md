@@ -9,11 +9,11 @@ The project is developed with React for client-side and Laravel for server-side.
 ### Client Side:
 
 ```bash
-  npm install
+npm install
 ```
 
 ```bash
-  npm run start
+npm run start
 ```
 
 ### Server Side :
@@ -27,7 +27,7 @@ php artisan migrate
 #### Run server
 
 ```bash
-  php artisan serve
+php artisan serve
 ```
 
 ## References:
