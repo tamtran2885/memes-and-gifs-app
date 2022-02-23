@@ -1,71 +1,39 @@
-## 🎯 Objective
+## MEMES AND GIFS PROJECT
 
-The **project** to be **developed** for this **challenge** will be a **Memes and Gifs** web page in which **users** can **upload their files** and **share** it with **everyone**.
+This project is originated from an idea of developing a memes and gifs web application like Giphy. Anyone can access to this application and views the content, but only users who are registered can upload their own gifs/memes. Besides viewing and obtaining links of the multimedia resources, users can also search for these items according to their references.
 
-## 🧱 General analysis
+The project is developed with React for client-side and Laravel for server-side.
 
-The **final purpose** is that **any user** can **visit** the web page and **share** the **content** uploaded by **registered users**.
+## Installation
 
-The **main functionalities** are detailed below:
+### Client Side:
 
-- **Login** and **registration**
-- **Home page** that will show the **content uploaded** by users
-- **Main Navbar** that will include:
-  - **Content search bar**:
-    - You will have at least **three options** to filter the **main content**
-  - **Links** to the **main categories**
-  - **Information** of the **logged in user**
-    - If you are not logged in, the **button** to log in will be **displayed**
-- **Upload content page**
-  - If the user is logged in, a **multimedia resource** can be **uploaded** from their **computer** or from a an **external link**
-- **Page** of the **selected multimedia** element:
-  - The **user can obtain the link** of the **multimedia resource** to include it on any **website**
+```bash
+  npm install
+```
 
-## 🔑 Key requirements
+```bash
+  npm run start
+```
 
-- Use at least **one third-party API**
-- Use at least **one third-party library**
-- Creation of your own **database** to **store** all the **information**
-- **Anyone can access the website** and **view** the **content** of other **users**, but only **previously registered** users **can upload multimedia content**
+### Server Side :
 
-https://github.com/assembler-institute/assembler-tech-challenge-v2/blob/main/README.md
+#### Migrate table to database:
 
-https://styled-components.com/docs/basics
+```bash
+php artisan migrate
+```
 
-(Laravel server)
-http://localhost:8000/
+#### Run server
 
-(XAMPP- Apache, MySQL)
-http://localhost/phpmyadmin/index.php
+```bash
+  php artisan serve
+```
 
-http://localhost/phpmyadmin/
+## References:
 
-php artisan make:controller UserController
-php artisan make:model User
-
-## Make public the image folder
-
-- congif/filesystems.php
-  'links' => [
-  public_path('memes') => storage_path('app/memes'),
-  ],
-
-## Create path to get the file
-
-php artisan storage:link
-
-## Create new table
-
-php artisan make:migration create_categories_table
-
-## Migrate table to database
-
-php artisan migrate --path=/database/migrations/2022_02_22_170125_create_categories_table.php
-
-## Create Model
-
-php artisan make:model Category
-
-## Link of uploaded image
-
-http://localhost:8000/memes/FOViLJy0gKfmiqlwgMLAtILwJdIJ3fHY3B1WPEtN.gif
+[React.js](https://reactjs.org/),
+[Style-components](https://styled-components.com/),
+[React-Modal](https://www.npmjs.com/package/react-modal),
+[Laravel](https://laravel.com/),
+[Axios](https://www.axios.com/)
